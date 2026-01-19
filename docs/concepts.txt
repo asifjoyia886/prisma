@@ -1,0 +1,54 @@
+1-npm -> ik package manager ha ,jo keya krta ha k jo bhe javascript based package ha us ko node environment mai la k ana ,install krna ,aur usable bnana.
+
+2-node -> pehla keya hota tha k js code ko sirf browser chalata tha,yani hr cheez sirf browser he run kr skta tha.keo k browser k pass tha v8 engine tha,jo keya krta tha k js code ko run krta tha ,
+   1-v8Engine
+   2-apis
+   3-os stuff 
+   un k waja s hum phr browser mai run keye baghir he code ko alehda apni machine p run kr skta hai.backend likh skta hai,file k related kam kr skta ha,sara ab ye handle kr skta.
+
+npm ->js-code =>(node environment)->run those javascript instructions
+
+3-npm init -y ==> us filder ko jo ha wo node environment bna do ,ye keya kre ga ik file bnae ga jo k package.json ha jo project k entry point ha,wahah sara dependcies jo ha wo recorded hoti ha,dev dependcies bhe yaha hoti ha,us k baad entry point bhe yaah hota to ap main file ko bhe yaha s run kr skta ha.
+-----> lets say ik hmara entry point fiel hoti ha e.g index.js ha to yaha hm sari instructions jo ha wo rkha ga ,baki jo bhe insturtion ap alehda likhe ga like jo bhe dosri file ha wo bhe yaha improt kr k use kr skta ha ,keo  ,to yaha s cheze jo ha wo strt hoti ha exicite hotiha  ha.ye pivot ha kisa bhe projct ka jo node environment mai .yaha he sara server jo ha wo create hoti ha,jo bhe ap na krna ha sara yaha ho ga.
+--> project bnaya jo node environment based ho ga,entry file references,pivot for all module
+
+
+4-typscript && tsc  
+          ->type safety agr code ko deni ha to ,tyepscript use krna bht zrrori ha,js mai kafi zeyda flaws ha data  ko la k ,eg 8=="8" to ye number aur string ko sath concate kr deta ha aur bhe kafi isseu ha us mai.
+          ->tyepscript ap na install kr deya to ap us k rules ko use krt skta ha,ab problem ye ha k typescript jo ha wo direct smjhna node k leye mushkil hota ha ,keo k wo to js ko smjthta ah ,us k leye js mai compile krna ,phr run krna ,to us leye ik runner lgta ha jo keya krta ha us ko run time mai compile bhe kr leta ha aur run bhe krta ha,
+
+
+                               (@types/node)
+problem: ab node mai kafi sara cheze ha kafi sara module jasa env,os k related like kafi trha k type k data jo ha wo return krta ha ,like input bhe leta ha to waha bhe type safety chaye ,jasa process module ha ,un sb module k bhe bara mai typescript ko koi idea ni ha ,to nodeModule k ander module/type k ander jo bhe cheze ha node k ander ha un k sath type bhe likhe ha to wo bhe install krni zrrori ha ta k koi issue na us 
+
+npx : command runner ,ye keya krta ha npm na jo bhe package install keya ha ,ye us k command ko run krta ha ,ye temporry download krta ah agr .bin mai na comand na ho to us ko phr run krta ha.ye keh len k pwer udar leta ha npm aur aur kam krta ha ..
+
+
+npm tsc init: ye keya krta ha typescript runner us k init krta ha like ik fiel file bnanta ha jaha typescritp related sara rule likhe jata ha ,kis thra strictness hona chaye,sara cheze yaha hoti ha us file k andr 
+us fiel ka nameha tsc.config.ts
+
+npm install prisam @prisma/client @types/pg --save-dev =>   sb s pehla us na install keya ha prisma jo basically ik CLI k kam krta ha ,ap ko keya deta ha :
+      1-prisma client
+      2-schema ko create krna k leye /db structure
+      3-prisma run migrate --name 
+phr ap na postgresql driver k type define ke jo k run time p typescript ko btae k db structure kasa  ho ga.
+
+
+npm install @prisma/client @prisma/adapter-pg pg dotenv---> yaha bht  important chez jo run time engine jo prisam client k code ha jo lihta ha ya generated
+hota ha us ko run krna k leye hmai jo chaye ,like engine jo us ko run kr saka wo hmai @prisma/client s milta ah ..👉 actual query engine + runtime library
+summary:
+schema.prisma
+      ↓
+prisma generate
+      ↓
+Generated client code
+      ↓
+@prisma/client (runtime engine) ← MUST be installed
+->har database ke liye specific driver install karna hota hai
+Prisma CLI sirf client generate karta hai
+lekin us client ko chalane ke liye @prisma/client runtime library install karni parti hai
+
+Har database ke liye alag driver aur adapter hota hai
+kyun ke har database ka protocol aur behavior different hota hai
+
+prisma.config.ts --> ye file keya krti ha ye sb s important file  
