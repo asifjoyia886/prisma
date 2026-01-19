@@ -52,3 +52,20 @@ Har database ke liye alag driver aur adapter hota hai
 kyun ke har database ka protocol aur behavior different hota hai
 
 prisma.config.ts --> ye file keya krti ha ye sb s important file  
+
+
+
+
+node_modules/@prisma/client => by default jo prisma client wo yaha generate hota ha ,aur ye confussion create kre ga hum ko  jo ha wo 
+📁 ../generated/prisma  us mai generate krta hai ta k clean structure raha  monorepo .aur us na he db s through adapter-pg|postgresql driver k through communicate krna hota.keo k wo ik bridge k trha kam kre krta db aur prisma client k bech mai .
+
+Model: us k baad ap schema.prisam k ander ap model define kro ga ,database ka structure define kro ,jo bhe objects ha aur us k attribute ha wo sara likho ga aur 
+
+           (npx prisma migrate dev --name init)
+migrate:  us k baad ap ap us model k jo ha reflection ha us ko repected db mai push kro ga ,us trha k data k structure bnao ,ye phr table bna de ga db 
+
+Prisam client:
+             npx prisma generate -> ye client bnae ga jo db s bat kre ga.
+
+
+phr generated/prisam/client  ko use kr k hr ga ap query kr skat ah ...
