@@ -68,4 +68,60 @@ Prisam client:
              npx prisma generate -> ye client bnae ga jo db s bat kre ga.
 
 
-phr generated/prisam/client  ko use kr k hr ga ap query kr skat ah ...
+phr generated/prisam/client  ko use kr k hr ga ap query kr skat ah 
+
+
+
+(flow)
+schema.prisma (us file mai model define hn ga ,aur client kaha rkhna prisma client jo crud kre us ko kaha rkhan ha wo yaha dir define ho .)
+      ↓
+Prisma CLI
+      ↓
+Migration → tables created
+      ↓
+prisma generate
+      ↓
+Generated Prisma Client
+      ↓
+Node.js imports client
+      ↓
+Client → Adapter → Driver → Database
+
+
+npm i prisma, ye hmai keya da :
+         1-prisma.schema
+          2-prisma client code .
+          3-migrations k tools 
+npm  i @prisma/client : ye run time p code ko chalana wala engine ,keo code khud run ni ho skta ha ye sara kam krta ha ,us ko query engne kehta ha 
+pg: ye database driver jo hmai db s communicate krna mai help krta ha ,postgres driver jo ha ,ye translator hota ha between database and code
+@prisma/adapter-pg : us translater s bat krna kr k leye differnet adapter hoti ha jo basicaly help kre ga prisma ko ko wo translater s bat kr saka ,yaha adapter bhe different hota ha,pg,mysql aur sql etc.
+../generated/prisam: us ko hum alehda rekhe ga client keo k messy nai krna ha ,alehda alehda cheze zedya better ,us k bad ap na client ko us k fiel s uthat ha destructre ,copy of instace and ready for crud.
+->(npx prisma generate)
+
+generated/
+ └── prisma/
+     └── client
+
+
+
+prisma = Car factory 🏭
+
+prisma generate = Car bana di
+
+@prisma/client = Engine + fuel system
+
+pg driver = Road connection
+
+Database = City
+
+
+nodemon: basicaly ap k server ko continouse run run rkhta ha,
+ts-node: run time p ap k typscript code ko js mai compile krta ha,
+npx tsc init: ye command ap k rule jo typescipt k ander define kr skta ha,us k leye ik file ha wo file generate krta ha .to ye bht important .
+
+hum chata hai code ko ts-node s run kro na k nodemon s.
+"scripts": {
+  "dev": "nodemon --exec ts-node src/index.ts"
+}
+.ts : ts extention bht zrrori h ,like file k extention bht zrori ha ,keo k compiler na dekhna hota ha k us k extention sahi ha ya n iha ..
+-------------very imporant ------------------------------> jb bhe koi package install keya ha agr us k koi command use krna ha ,prisma ik package hum na instal kr deya aur us k koi commamd use krna ha to hmai ik npx k help s hum log wo use  kr skta .jo k bht important .
