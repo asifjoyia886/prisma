@@ -1,0 +1,33 @@
+hum generated prisma client s hum log crud ko perform kre ga.
+Model:
+         prisma k ander hum log model bnata ha jo k databae mai map hota ha
+prisam field ->camel case database_colum -> snane_kase
+prisma k filed jo hum model k ander likh deta ha e.g id Int  yhaa p jo id ha wo basicaly prisma k 
+filed to un filed ko ap an camel case mai likhna agr wo combination ha do ya zyda words
+Example:
+       us example k focus kre 
+              createdAt DateTime @default(now()) @map('created_at') ab ye dekhe db k field snake case ha.
+@ basically field level rule hota a jo column p lgta ha 
+@@ ye pora model p lgta h,jo k bht important 
+@map(users) -> ye jo schema hmai db mai dekhe ga wo users name k ho ga 
+@@unique([username,email]) -> ab yaha p ye ho ga k ,dono dubplicate ni ho skta ha
+@map column rename ho ga agr kisa column ko rename krna chta ha
+? optional hoga .
+Migration or table creation in db:
+      jb ap na modle bna leya us k bad ap na 
+   wo cheze db mai push krni ha waha un model k reflection create krna ha 
+   npx prisma migrate dev --name mesage_likhe_ass  to migraton history k sath table bnae ga 
+single record insert:
+            ik single record kas enter krna ah 
+        prisma_client.model_name_lowercase.builtFuncton()
+
+Common Built-in Functions
+Function	Kaam:
+create() -->	naya record
+findMany()-->	sab records
+findUnique()-->	ek record (unique field se)
+update()-->	update record
+delete()-->	delete record
+count()-->	count records
+
+
