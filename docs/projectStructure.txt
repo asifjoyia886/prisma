@@ -1,0 +1,1 @@
+(base) aj@pop-os:~/prismanextjs/ajhome$ npm run dev -- -p 5000
