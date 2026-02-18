@@ -1,0 +1,16 @@
+ab hum create,read,update and delete opearation kre ga ,apna client s jo basicly hmai help kre ga
+CREATE(): ye method ha jo hmai client deta ha ta k hum log database mai insert kr saka kuch 
+to ye function built in milt ha jo hmai help kre  ga ta k hum log record ko insert kr saka 
+schema.prisma: ye file asa ho 
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+    url      = env("DATABASE_URL")
+   
+}
+-------->url agr na likha to prisma ko pta ni chala ga k modle ya schema keyaha .
